@@ -1,14 +1,15 @@
 # Kinect v2 URDF Model for ROS 2 🤖
 
-Welcome to the **Kinect v2 URDF** model, migrated to **ROS 2**! This package provides a URDF model of the Kinect v2 sensor, perfect for integration in your **Gazebo** simulations or any ROS 2 application. 🌟
+This package provides a URDF model of the Kinect v2 sensor, perfect for integration in your **Gazebo** simulations or any ROS 2 application. 🌟
 
 ## Features ✨
 
 - 📦 **Fully URDF-based Kinect v2 model** for simulation in Gazebo
 - ⚙️ Compatible with **ROS 2** framework
 - 🖼️ Works seamlessly with **RViz** for visualization
-- 🌍 Static positioning or movable models available
 - 🌟 Includes camera and depth sensor simulation in Gazebo
+<!-- - 🌍 Static positioning or movable models available -->
+
 
 ---
 ![RViz](https://github.com/user-attachments/assets/2f4802d9-ae29-4627-a8e7-c31a3e463b1c) 
