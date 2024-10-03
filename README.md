@@ -26,7 +26,7 @@ Clone this repository into your ROS 2 workspace and build it with `colcon`:
 
 ```bash
 cd ~/ros2_ws/src
-git clone https://github.com/edupras/kinect_v2_urdf_ros2.git
+git clone https://github.com/edupras/kinect_v2_ros2.git
 cd ~/ros2_ws
 colcon build
 ```
