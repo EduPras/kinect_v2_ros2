@@ -4,7 +4,7 @@
   <description>
     <p>URDF Description package for kinect_v2 [ROS2]</p>
     <p>This package contains configuration data, 3D models, and launch files
-    for the kinect_v2 robot</p>
+    for the kinect_v2 robot, updated to ROS2.</p>
   </description>
 
   <maintainer email="eduardoprasniewski@gmail.com">EduPras</maintainer>

@@ -1,20 +1,24 @@
 from launch import LaunchDescription
 from launch_ros.actions import Node
-from launch.actions import IncludeLaunchDescription
+from launch.actions import IncludeLaunchDescription, DeclareLaunchArgument
 from launch.launch_description_sources import PythonLaunchDescriptionSource
-from launch.substitutions import Command, FindExecutable, PathJoinSubstitution
+from launch.substitutions import PathJoinSubstitution, LaunchConfiguration
 from launch_ros.substitutions import FindPackageShare
 
 def generate_launch_description():
-
+    
+    world_arg = DeclareLaunchArgument(name='world', default_value='/usr/share/gazebo-11/worlds/empty.world',
+                                    description='Flag to enable joint_state_publisher_gui')
     gazebo_launch = IncludeLaunchDescription(
         PythonLaunchDescriptionSource([
             PathJoinSubstitution([FindPackageShare('gazebo_ros'),
                                   'launch', 'gazebo.launch.py'])
-        ])
+        ]),
+        launch_arguments={
+            'world': LaunchConfiguration('world')
+        }.items()
     )
-
-    # Static transform publisher node
+    
     kinect_tf_node = Node(
         package='tf2_ros',
         executable='static_transform_publisher',
@@ -30,4 +34,4 @@ def generate_launch_description():
         arguments=['-topic', 'kinect_robot_description', '-entity', 'kinect_v2']
     )
 
-    return LaunchDescription([gazebo_launch, kinect_tf_node, spawn_model_node])
+    return LaunchDescription([world_arg, gazebo_launch, kinect_tf_node, spawn_model_node])
