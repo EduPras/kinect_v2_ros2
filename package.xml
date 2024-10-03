@@ -1,0 +1,40 @@
+<package format="3">
+  <name>kinect_v2</name>
+  <version>1.0.0</version>
+  <description>
+    <p>URDF Description package for kinect_v2 [ROS2]</p>
+    <p>This package contains configuration data, 3D models, and launch files
+    for the kinect_v2 robot</p>
+  </description>
+
+  <maintainer email="eduardoprasniewski@gmail.com">EduPras</maintainer>
+  <license>BSD</license>
+
+  <!-- Build tool dependencies -->
+  <buildtool_depend>ament_cmake</buildtool_depend>
+  <build_depend>rclpy</build_depend>
+
+  <!-- Dependencies needed at build time -->
+  <build_depend>roslaunch</build_depend>
+  <build_depend>robot_state_publisher</build_depend>
+  <build_depend>rviz2</build_depend>
+  <build_depend>joint_state_publisher</build_depend>
+  <build_depend>gazebo_ros</build_depend> 
+
+  <!-- Dependencies needed at runtime -->
+  <exec_depend>robot_state_publisher</exec_depend>
+  <exec_depend>rviz2</exec_depend>
+  <exec_depend>joint_state_publisher</exec_depend>
+  <exec_depend>gazebo_ros</exec_depend>
+  <exec_depend>rclpy</exec_depend>
+  <exec_depend>urdf_launch</exec_depend>
+
+  <depend>rclcpp</depend>
+  <depend>trajectory_msgs</depend>
+
+  <test_depend>ament_lint_auto</test_depend> 
+  <export>
+    <build_type>ament_cmake</build_type>
+    <gazebo_ros gazebo_model_path="${prefix}/.."/>
+  </export>
+</package>
