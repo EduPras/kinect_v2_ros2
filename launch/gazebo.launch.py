@@ -7,15 +7,15 @@ from launch_ros.substitutions import FindPackageShare
 
 def generate_launch_description():
     
-    world_arg = DeclareLaunchArgument(name='world', default_value='/usr/share/gazebo-11/worlds/empty.world',
+    world_arg = DeclareLaunchArgument(name='world', default_value='',
                                     description='Flag to enable joint_state_publisher_gui')
     gazebo_launch = IncludeLaunchDescription(
         PythonLaunchDescriptionSource([
-            PathJoinSubstitution([FindPackageShare('gazebo_ros'),
-                                  'launch', 'gazebo.launch.py'])
+            PathJoinSubstitution([FindPackageShare('ros_gz_sim'),
+                                  'launch', 'gz_sim.launch.py'])
         ]),
         launch_arguments={
-            'world': LaunchConfiguration('world')
+            'gz_args': LaunchConfiguration('world')
         }.items()
     )
     
@@ -27,11 +27,11 @@ def generate_launch_description():
     )
 
     spawn_model_node = Node(
-        package='gazebo_ros',
-        executable='spawn_entity.py',
-        name='spawn_model',
+        package='ros_gz_sim',
+        executable='create',
+        name='spawned_model',
         output='screen',
         arguments=['-topic', 'kinect_robot_description', '-entity', 'kinect_v2']
     )
 
-    return LaunchDescription([world_arg, gazebo_launch, kinect_tf_node, spawn_model_node])
+    return LaunchDescription([world_arg, kinect_tf_node, gazebo_launch, spawn_model_node])
