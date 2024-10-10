@@ -20,7 +20,8 @@
           <far>5</far>
         </clip>
       </camera>
-      <plugin name="${link_name}_controller" filename="libgazebo_ros_camera.so">
+      <!-- OLD GAZEBO SIM -->
+      <!-- <plugin name="${link_name}_controller" filename="libgazebo_ros_camera.so">
         <baseline>0.2</baseline>
         <alwaysOn>true</alwaysOn>
         <updateRate>1.0</updateRate>
@@ -42,7 +43,7 @@
         <Cy>0</Cy>
         <focalLength>0</focalLength>
         <hackBaseline>0</hackBaseline>
-      </plugin>
+      </plugin> -->
     </sensor>
     <material value="Gazebo/Red" />
   </gazebo>
@@ -52,20 +53,51 @@
   <gazebo reference="${link_name}">
     <sensor type="camera" name="kinect_v2_rgb_sensor">
       <always_on>true</always_on>
-      <update_rate>1.0</update_rate>
+      <update_rate>5.0</update_rate>
       <camera>
-        <horizontal_fov>${57.0*pi/180.0}</horizontal_fov>
-        <image>
-          <format>B8G8R8</format>
-          <width>1280</width>	
-          <height>800</height>
-        </image>
-        <clip>
-          <near>0.01</near>
-          <far>5</far>
-        </clip>
-      </camera>
-      <plugin name="${link_name}_controller" filename="libgazebo_ros_camera.so">
+            <pose>0 0 0 0 -0 0</pose>
+            <horizontal_fov>${57.0*pi/180.0}</horizontal_fov>
+            <image>
+              <width>1280</width>
+              <height>800</height>
+              <format>RGB_INT8</format>
+              <anti_aliasing>4</anti_aliasing>
+            </image>
+            <camera_info_topic>__default__</camera_info_topic>
+            <trigger_topic></trigger_topic>
+            <triggered>false</triggered>
+            <clip>
+              <near>0.01</near>
+              <far>5</far>
+            </clip>
+            <save enabled='false'>
+              <path>__default__</path>
+            </save>
+            <visibility_mask>4294967295</visibility_mask>
+            <noise>
+              <type>none</type>
+              <mean>0</mean>
+              <stddev>0</stddev>
+            </noise>
+            <distortion>
+              <k1>0.00000001</k1>
+              <k2>0.00000001</k2>
+              <k3>0.00000001</k3>
+              <p1>0</p1>
+              <p2>0</p2>
+              <center>0 0</center>
+            </distortion>
+            <!-- <lens>
+              <type>stereographic</type>
+              <scale_to_hfov>true</scale_to_hfov>
+              <cutoff_angle>1.5708</cutoff_angle>
+              <env_texture_size>256</env_texture_size>
+            </lens> -->
+            <optical_frame_id></optical_frame_id>
+          </camera>
+
+      <!-- OLD GAZEBO SIM -->
+      <!-- <plugin name="${link_name}_controller" filename="libgazebo_ros_camera.so">
         <alwaysOn>true</alwaysOn>
         <updateRate>1.0</updateRate>
         <cameraName>${camera_name}_rgb</cameraName>
@@ -73,7 +105,7 @@
         <cameraInfoTopicName>/${camera_name}/rgb/camera_info</cameraInfoTopicName>
         <depthImageTopicName>/${camera_name}/depth/image_raw</depthImageTopicName>
         <depthImageCameraInfoTopicName>/${camera_name}/depth/camera_info</depthImageCameraInfoTopicName>
-        <!-- <pointCloudTopicName>/${camera_name}/depth_registered/points</pointCloudTopicName> -->
+        <pointCloudTopicName>/${camera_name}/depth_registered/points</pointCloudTopicName>
         <frameName>${frame_name}</frameName>
         <pointCloudCutoff>0.5</pointCloudCutoff>
         <distortionK1>0.00000001</distortionK1>
@@ -86,7 +118,7 @@
         <Cy>0</Cy>
         <focalLength>0</focalLength>
         <hackBaseline>0</hackBaseline>
-      </plugin>
+      </plugin> -->
     </sensor>
     <material value="Gazebo/Red" />
   </gazebo>
