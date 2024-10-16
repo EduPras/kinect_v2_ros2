@@ -21,4 +21,12 @@ def generate_launch_description():
         ])
     )
 
-    return LaunchDescription([gazebo_launch, display_launch])
+    bridge_launch = IncludeLaunchDescription(
+        PythonLaunchDescriptionSource([
+            PathJoinSubstitution([FindPackageShare('kinect_v2'),
+                                  'launch', 'bridges.launch.py'])
+        ])
+    )
+
+
+    return LaunchDescription([gazebo_launch, display_launch, bridge_launch])
