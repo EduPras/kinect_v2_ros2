@@ -5,20 +5,21 @@
   </gazebo>
 <xacro:macro name="kinect2_ir_gazebo" params="link_name frame_name camera_name">
   <gazebo reference="${link_name}">
-    <sensor type="depth" name="kinect_v2_ir_sensor">
+    <sensor type="depth_camera" name="kinect_v2_ir_sensor">
       <always_on>true</always_on>
-      <update_rate>1.0</update_rate>
+      <update_rate>5.0</update_rate>
       <camera>
         <horizontal_fov>${57.0*pi/180.0}</horizontal_fov>
         <image>
           <format>L8</format>
-          <width>1280</width>	
-          <height>800</height>	
+          <width>512</width>	
+          <height>424</height>	
         </image>
         <clip>
           <near>0.01</near>
           <far>5</far>
         </clip>
+      <optical_frame_id>teste</optical_frame_id>
       </camera>
       <!-- OLD GAZEBO SIM -->
       <!-- <plugin name="${link_name}_controller" filename="libgazebo_ros_camera.so">
